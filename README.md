@@ -7,8 +7,8 @@ git clone https://github.com/laravel/laravel.git web/src #or place your laravel 
 docker-compose up
 #On a nother command propmt from the simple-laravel-docker location run:
 docker exec -it web bash
-php artisan key:generate
 composer install
+php artisan key:generate
 chgrp -R www-data storage bootstrap/cache
 chmod -R ug+rwx storage bootstrap/cache
  # This would allow you to see your docker host needed for DB_HOST
