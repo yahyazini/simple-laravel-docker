@@ -30,11 +30,16 @@ DB_USERNAME=root
 DB_PASSWORD=pass
 ```
 
-# How to use Composer?
-`docker exec -it app bash`
+# Accessing the App from the command line
+You can use the following command to access the **app** container's command line which would allow you to use npm, composer...
 
-This allows you to execute commans inside the **app** container and from there it's business as usual:
-`composer install`...`composer dump-autoload`...etc.
+`docker exec -it app bash`
+### Composer Install as an example:
+
+```bash
+docker exec -it app bash
+composer install
+```
 
 # How do I add PHP libraries?
 Use the **php/Dockerfile**'s RUN section to add and install any necessary PHP libraries
