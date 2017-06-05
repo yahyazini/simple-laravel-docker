@@ -8,11 +8,11 @@ services:
      - 3306:3306
     volumes:
       - db:/var/lib/mysql
-  app:
-    build: ./php
-    container_name: app
+  web:
+    build: ./web
+    container_name: web
     volumes:
-      - ./app/src:/var/www/html/
+      - ./web/src:/var/www/html/
       - ./storage/app:/var/www/html/storage/app
       - ./storage/logs:/var/www/html/storage/logs
     depends_on:

@@ -3,10 +3,10 @@
 ```bash
 git clone https://github.com/yahyazini/simple-laravel-docker.git
 cd simple-laravel-docker
-git clone https://github.com/laravel/laravel.git app/src #or place your laravel app inside app/src
+git clone https://github.com/laravel/laravel.git web/src #or place your laravel app inside web/src
 docker-compose up
 #On a nother command propmt from the simple-laravel-docker location run:
-docker exec -it app bash
+docker exec -it web bash
 php artisan key:generate
 composer install
 chgrp -R www-data storage bootstrap/cache
@@ -30,30 +30,30 @@ DB_USERNAME=root
 DB_PASSWORD=pass
 ```
 
-# Accessing the App from the command line
-You can use the following command to access the **app** container's command line which would allow you to use npm, composer...
+# Accessing the Web container from the command line
+You can use the following command to access the **web** container's command line which would allow you to use npm, composer...
 
-`docker exec -it app bash`
+`docker exec -it web bash`
 ### Composer Install as an example:
 
 ```bash
-docker exec -it app bash
+docker exec -it web bash
 composer install
 ```
 
 # How do I add PHP libraries?
-Use the **php/Dockerfile**'s RUN section to add and install any necessary PHP libraries
+Use the **web/Dockerfile**'s RUN section to add and install any necessary PHP libraries
 don't forget to rebuild and rerun after any changes to the settings:
 
 `docker-compose up --build`
 
 # How do I Change PHP.ini settings?
-Use the **php/php.ini**'s file to add or change any ini settings:
+Use the **web/php.ini**'s file to add or change any ini settings:
 
 `docker-compose up --build`
 
 # How do I change the version of PHP or MySQL
-Changing the **FROM** version in **php/Dockerfile** or **mysql/Dockerfile** and then rebuilding and running the container again would result in a change of the versions in the environment.
+Changing the **FROM** version in **web/Dockerfile** or **mysql/Dockerfile** and then rebuilding and running the container again would result in a change of the versions in the environment.
 
 # Important Note:
-To track changes on the `app/src` file you have to remove the **src** line from the **.gitignore** and refresh it.
+To track changes on the `web/src` file you have to remove the **src** line from the **.gitignore** and refresh it.
