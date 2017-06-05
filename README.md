@@ -1,7 +1,7 @@
 # How to use ?
 
 ```bash
-git clone the repo
+git clone https://github.com/yahyazini/simple-laravel-docker.git
 cd simple-laravel-docker
 git clone https://github.com/laravel/laravel.git app/src #or place your laravel app inside app/src
 docker-compose up
