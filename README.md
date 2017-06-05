@@ -2,12 +2,17 @@
 
 ```bash
 git clone the repo
-git clone https://github.com/laravel/laravel.git simple-laravel-docker/app/src
 cd simple-laravel-docker
+git clone https://github.com/laravel/laravel.git app/src
 docker-compose up
 ```
-
 **If you are using a mac, ensure you are sharing the project folder in the docker sharing  tab under preferences**
+
+# How to use Composer?
+`docker exec -it app bash`
+
+This will ssh you into the app container and from there it's business as usual:
+`composer install`...`composer dump-autoload`...etc.
 
 # How do I add PHP libraries?
 Use the **php/Dockerfile**'s RUN section to add and install any necessary PHP libraries
@@ -22,3 +27,6 @@ Use the **php/php.ini**'s file to add or change any ini settings:
 
 # How do I change the version of PHP or MySQL
 Changing the **FROM** version in **php/Dockerfile** or **mysql/Dockerfile** and then rebuilding and running the container again would result in a change of the versions in the environment.
+
+# Important Note:
+To track changes on the `src` file you have to remove the **src** line from the **.gitignore** and refresh it.
