@@ -1,0 +1,35 @@
+version: '2'
+services:
+  mysql:
+    build: ./mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+    ports:
+     - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    build: ./php
+    container_name: app
+    volumes:
+      - ./app/src:/var/www/html/
+      - ./storage/app:/var/www/html/storage/app
+      - ./storage/logs:/var/www/html/storage/logs
+    depends_on:
+      - mysql
+    ports:
+     - 8000:80
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+     - 8080:80
+    volumes:
+     - /sessions
+    environment:
+      PMA_HOST: mysql
+      # MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: pass
+
+volumes:
+  db:
