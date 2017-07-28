@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo rm -rf web/src
 git clone https://github.com/laravel/laravel.git web/src
 docker-compose run web bash <<'EOF'
 cp .env.example .env
