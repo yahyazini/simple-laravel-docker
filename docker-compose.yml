@@ -3,7 +3,7 @@ services:
   mysql:
     build: ./mysql
     env_file:
-      - ./mysql/envfile.txt
+      - ./envfile.txt
     ports:
      - 3306:3306
     volumes:
@@ -17,11 +17,14 @@ services:
       - ./web/src:/var/www/html/
       - ./storage/app:/var/www/html/storage/app
       - ./storage/logs:/var/www/html/storage/logs
-      - ./web/config:/etc/apache2/sites-available
+      - ./web/config/apache:/etc/apache2/sites-available
+      - ./web/config/laravel/database.php:/var/www/html/config/database.php
     depends_on:
       - mysql
     ports:
      - 8000:80
+    env_file:
+      - ./envfile.txt
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
